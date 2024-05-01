@@ -1,0 +1,52 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "Java Essentials",
+      "genre": "Programming",
+      "isbn": "978-0141439518",
+      "format": "paper",
+      "summary": "This book covers all important aspects of Java programming. It is highly recommended by experienced SWE"
+    },
+    {
+      "id": "2",
+      "title": "Typescript Essentials",
+      "genre": "Programming",
+      "isbn": "329-01414395234",
+      "format": "paper",
+      "summary": "TS is awesome. This book covers all important aspects of Java programming. Happy Coding."
+    },
+    {
+      "id": "3",
+      "title": "JAVA",
+      "genre": "Book",
+      "isbn": "329-01414395234",
+      "format": "Ebook",
+      "summary": "I love java"
+    },
+    {
+      "id": "4",
+      "title": "TS",
+      "genre": "Book",
+      "isbn": "329-01414395234",
+      "format": "Ebook",
+      "summary": "I love TS"
+    },
+    {
+      "id": "6",
+      "title": "Angular",
+      "genre": "Programming",
+      "isbn": "123-9823742374",
+      "format": "Ebook",
+      "summary": "I will master angular."
+    },
+    {
+      "id": "5",
+      "title": "JAVA",
+      "genre": "Book",
+      "isbn": "329-01414395234",
+      "format": "Ebook",
+      "summary": "I love java"
+    }
+  ]
+}
