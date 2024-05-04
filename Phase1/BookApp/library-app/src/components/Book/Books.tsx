@@ -11,7 +11,7 @@ function Books() {
         <div className="container">
           <div className="row row-cols-1 row-cols-s-2 ">
             <ul>
-              <h1>Books</h1>
+              <h1>📚Books</h1>
               {books.map((book, i) => (
                 <div key={i}>
                   <BookTemplate book={book} />

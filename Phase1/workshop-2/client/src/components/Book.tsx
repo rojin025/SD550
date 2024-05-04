@@ -10,11 +10,10 @@ interface BookProps {
   data: IBook;
 }
 export default function Book({ data }: BookProps) {
-  const { authors } = useContext(GlobalContext);
+  const { authors, books, setBooks } = useContext(GlobalContext);
   const [selectedAuthors, setSelectedAuthor] = useState<string[] | undefined>(
     data.authors
   );
-  const { books, setBooks } = useContext(GlobalContext);
   const navigate = useNavigate();
 
   const onChange = (e: any) => {
@@ -95,12 +94,12 @@ export default function Book({ data }: BookProps) {
           <div>
             <input
               type="checkbox"
-              id={author.id}
+              id={data.title + author.id}
               value={author.id}
               checked={selectedAuthors?.includes(author.id)}
               onChange={onChange}
             />
-            <label htmlFor={author.id}>{author.id}</label>
+            <label htmlFor={data.title + author.id}>{author.id}</label>
           </div>
         );
       })}
