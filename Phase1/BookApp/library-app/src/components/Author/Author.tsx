@@ -1,11 +1,10 @@
-import { Book } from "./Types/types";
+import { AuthorI } from "../../Types/types";
 
 interface props {
-  book: Book;
-  onClick: () => void;
+  author: AuthorI;
 }
 
-function BookTemplates({ book }: props) {
+function AuthorTemplate({ author }: props) {
   return (
     <div className="col">
       <div className="card shadow-sm">
@@ -32,14 +31,16 @@ function BookTemplates({ book }: props) {
             dy=".3em"
             data-darkreader-inline-fill=""
           >
-            {book.title}
+            {author.firstname} {author.lastname}
           </text>
         </svg>
 
         <div className="card-body">
-          <b>Genre: {book.genre}</b>
+          <b>Email: {author.email}</b>
           <p className="card-text">
-            <i> - "{book.summary}"</i>
+            <i> {author.id}</i>
+            <br />
+            <i> "{author.address}"</i>
           </p>
         </div>
       </div>
@@ -47,22 +48,4 @@ function BookTemplates({ book }: props) {
   );
 }
 
-export default BookTemplates;
-
-<div className="card-body">
-  <p className="card-text">
-    This is a wider card with supporting text below as a natural lead-in to
-    additional content. This content is a little bit longer.
-  </p>
-  <div className="d-flex justify-content-between align-items-center">
-    <div className="btn-group">
-      <button type="button" className="btn btn-sm btn-outline-secondary">
-        View
-      </button>
-      <button type="button" className="btn btn-sm btn-outline-secondary">
-        Edit
-      </button>
-    </div>
-    <small className="text-muted">9 mins</small>
-  </div>
-</div>;
+export default AuthorTemplate;
