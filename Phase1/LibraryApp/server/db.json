@@ -1,0 +1,75 @@
+{
+  "authors": [
+    {
+      "id": "1",
+      "firstname": "Thao",
+      "lastname": "Vu",
+      "phone": "641-123-5678",
+      "email": "thaovu@miu.edu",
+      "address": "Fairfield, IA, 52556"
+    },
+    {
+      "id": "2",
+      "firstname": "Tony",
+      "lastname": "Vu",
+      "phone": "641-123-5678",
+      "email": "thaovu@miu.ed∫u",
+      "address": "Fairfield, IA, 52556"
+    }
+  ],
+
+  "publisers": [
+    {
+      "id": "1",
+      "name": "MIU Press",
+      "phone": "641-123-1234",
+      "email": "press@miu.edu",
+      "address": "Fairfield, IA, 5256"
+    }
+  ],
+
+  "books": [
+    {
+      "id": "1",
+      "title": "Java Essentials",
+      "genre": "Programming",
+      "isbn": "978-0141439518",
+      "format": "paper",
+      "summary": "This book covers all important aspects of Java programming. It is highly recommended by experienced SWE",
+      "authors": [1],
+      "publisher": 1,
+      "catalog": {
+        "numberOfCopies": 10,
+        "availableCopies": 5
+      }
+    },
+    {
+      "id": "2",
+      "title": "Python for Data Science",
+      "genre": "Programming",
+      "isbn": "978-1491957660",
+      "format": "ebook",
+      "summary": "A comprehensive guide to using Python for data analysis and machine learning. Suitable for beginners and experienced programmers alike.",
+      "authors": [2],
+      "publisher": 1,
+      "catalog": {
+        "numberOfCopies": 10,
+        "availableCopies": 5
+      }
+    },
+    {
+      "id": "3",
+      "title": "JavaScript: The Good Parts",
+      "genre": "Programming",
+      "isbn": "978-0596517748",
+      "format": "paper",
+      "summary": "Discover the best practices and most effective techniques for writing clean, efficient JavaScript code. A must-read for every JavaScript developer.",
+      "authors": [3],
+      "publisher": 1,
+      "catalog": {
+        "numberOfCopies": 10,
+        "availableCopies": 5
+      }
+    }
+  ]
+}
