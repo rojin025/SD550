@@ -2,7 +2,7 @@ import { ChangeEvent, FormEvent, useContext, useMemo, useState } from "react";
 
 import axios from "axios";
 import { useLocation } from "react-router-dom";
-import GlobalContext from "../Context";
+import GlobalContext from "../GlobalContext";
 
 const BASE_URL = "http://localhost:9000/";
 

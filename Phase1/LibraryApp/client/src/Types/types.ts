@@ -24,7 +24,7 @@ export interface AuthorI {
   address: string;
 }
 
-export interface PubliserI {
+export interface PublisherI {
   id: string;
   name: string;
   phone: string;

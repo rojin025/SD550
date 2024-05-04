@@ -3,7 +3,7 @@ import { BookI } from "../../Types/types";
 import axios from "axios";
 import { BASE_URL } from "./BookList";
 import { useContext } from "react";
-import GlobalContext from "../Context";
+import GlobalContext from "../GlobalContext";
 
 interface props {
   book: BookI;

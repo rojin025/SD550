@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { BookI } from "../../Types/types";
 import Books from "./Books";
-import GlobalContext from "../Context";
+import GlobalContext from "../GlobalContext";
 
 export const BASE_URL = "http://localhost:9000/";
 

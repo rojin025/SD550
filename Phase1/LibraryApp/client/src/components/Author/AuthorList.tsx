@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 
 import axios from "axios";
 
-import GlobalContext from "../Context";
+import GlobalContext from "../GlobalContext";
 import { BASE_URL } from "../Book/BookList";
 import Authors from "./Authors";
 

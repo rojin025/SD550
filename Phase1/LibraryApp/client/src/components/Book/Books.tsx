@@ -1,7 +1,7 @@
 import BookTemplate from "./BookTemplate";
 import { BookI } from "../../Types/types";
 import { useContext } from "react";
-import GlobalContext from "../Context";
+import GlobalContext from "../GlobalContext";
 
 function Books() {
   const { books } = useContext(GlobalContext);

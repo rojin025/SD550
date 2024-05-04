@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import AuthorTemplate from "./Author";
-import GlobalContext from "../Context";
+import GlobalContext from "../GlobalContext";
 // import { AppContext } from "../../App";
 
 function Authors() {
