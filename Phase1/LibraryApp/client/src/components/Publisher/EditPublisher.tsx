@@ -1,12 +1,13 @@
 import axios from "axios";
 import { MouseEvent, useContext, useState } from "react";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { BASE_URL } from "../Book/BookList";
 import GlobalContext from "../GlobalContext";
 
 function EditPublisher() {
   const { publishers, setPublishers } = useContext(GlobalContext);
   const location = useLocation();
+
   const [publisher, setPublisher] = useState(location.state || {});
   const navTo = useNavigate();
   console.log(location);
@@ -32,8 +33,7 @@ function EditPublisher() {
         console.log("index: ", index);
         publishers[index] = res.data;
         setPublishers([...publishers]);
-        console.log("updated Sucessfully!!!!!!!");
-        navTo("/publishers");
+        window.history.back();
       } catch (error) {
         console.log("Error on UpdatePublisher:", error);
       }

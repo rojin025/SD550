@@ -1,14 +1,17 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { useState } from "react";
+
 import BookList from "./components/Book/BookList";
 import AuthorList from "./components/Author/AuthorList";
 import PageNotFound from "./components/PageNotFound";
 import Home from "./components/Home";
 import PublisherList from "./components/Publisher/PubliherList";
 import GlobalContext from "./components/GlobalContext";
-import { AuthorI, BookI, PublisherI } from "./Types/types";
-import { useState } from "react";
 import EditBook from "./components/Book/EditBook";
 import EditPublisher from "./components/Publisher/EditPublisher";
+import AddPublisher from "./components/Publisher/AddPublisher";
+
+import { AuthorI, BookI, PublisherI } from "./Types/types";
 
 function App() {
   const [books, setBooks] = useState<BookI[]>([]);
@@ -34,6 +37,7 @@ function App() {
           <Route path="editBook" element={<EditBook />} />
           <Route path="/authors" element={<AuthorList />} />
           <Route path="/publishers" element={<PublisherList />} />
+          <Route path="/addPublisher" element={<AddPublisher />} />
           <Route path="/editPublisher" element={<EditPublisher />} />
           <Route path="*" element={<PageNotFound />} />
         </Routes>

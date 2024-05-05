@@ -1,4 +1,4 @@
-import { useContext, useEffect, useMemo } from "react";
+import { useContext, useEffect } from "react";
 import GlobalContext from "../GlobalContext";
 import axios from "axios";
 import { BASE_URL } from "../Book/BookList";
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 
 function PublisherList() {
   const { publishers, setPublishers } = useContext(GlobalContext);
-  const navigate = useNavigate();
+  const navTo = useNavigate();
 
   useEffect(() => {
     const loadPublishers = async () => {
@@ -25,13 +25,16 @@ function PublisherList() {
 
   return (
     <>
-      <div className="position-sticky top-0 m-2">
+      <div className="position-sticky top-0 m-4">
         <div className="row">
-          <div className="col" onClick={() => navigate("/home")}>
-            <h3>Home🏠</h3>
+          <div className="col" onClick={() => navTo("/home")}>
+            <h3>Library📚</h3>
           </div>
           <div className="col">
-            <h3>Publishers 🎉</h3>
+            <h3>Publishers</h3>
+          </div>
+          <div className="col" onClick={() => navTo("/addPublisher")}>
+            <h3>Add</h3>
           </div>
         </div>
       </div>

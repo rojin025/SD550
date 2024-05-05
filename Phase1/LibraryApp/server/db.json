@@ -21,7 +21,7 @@
     {
       "id": "1",
       "name": "MIU Press",
-      "phone": "641-123-1234",
+      "phone": "641-123-1204",
       "email": "press@miu.edu",
       "address": "Fairfield, IA, 5256"
     },
@@ -37,13 +37,6 @@
       "name": "Forbs Press",
       "phone": "641-123-1234",
       "email": "press@forbs.edu",
-      "address": "Fairfield, IA, 5256"
-    },
-    {
-      "id": "4",
-      "name": "Google Press",
-      "phone": "641-123-1234",
-      "email": "press@google.edu",
       "address": "Fairfield, IA, 5256"
     },
     {

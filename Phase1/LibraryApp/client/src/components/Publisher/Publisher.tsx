@@ -1,14 +1,34 @@
 import { useNavigate } from "react-router-dom";
 import { PublisherI } from "../../Types/types";
+import axios from "axios";
+import { BASE_URL } from "../Book/BookList";
+import { useContext } from "react";
+import GlobalContext from "../GlobalContext";
 
 interface props {
   publisher: PublisherI;
 }
 
 function Publisher({ publisher }: props) {
+  const { publishers, setPublishers } = useContext(GlobalContext);
+
   const navigate = useNavigate();
-  const handleEdit = (e: any) => {};
-  const handleDelete = (e: any) => {};
+
+  const handleDelete = async (e: any) => {
+    const confirm = window.confirm(`Do you want to delete ${publisher.name}?`);
+    if (!confirm) return;
+    try {
+      const res = await axios.delete(`${BASE_URL}publishers/${publisher.id}`);
+      if (res.status !== 200) throw new Error("Unable to Delete");
+      const updatedPublishers = publishers.filter(
+        (currentPublisher) => currentPublisher.id !== publisher.id
+      );
+      setPublishers(updatedPublishers);
+    } catch (error) {
+      console.log("Error Deleting: ", error);
+    }
+  };
+
   return (
     <>
       <div className="container">
