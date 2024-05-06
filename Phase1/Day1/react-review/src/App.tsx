@@ -3,6 +3,8 @@ import Memo2 from "./Memo/Memo2";
 import Memo3 from "./Memo/Memo3";
 import Memo4 from "./Memo/Memo4";
 import Memo from "./Memo/memoDemo";
+import UseMemo1 from "./Memo/NumberList";
+import UseMemo2 from "./Memo/UseMemo2";
 import UseEffectUnMount from "./useEffect/useEffectUnMount";
 import UseEffectUnMountDep from "./useEffect/useEffectUnMountDep";
 import UseEffectUnMountDep2 from "./useEffect/useEffectUnMountDep2";
@@ -11,7 +13,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Counter App</h1>
+        {/* <h1>Counter App</h1> */}
+        <h1>Exam Prep</h1>
       </header>
       {/* <div>
         <CounterButton increase={1} />
@@ -24,7 +27,9 @@ function App() {
       {/* <Memo /> */}
       {/* <Memo2 /> */}
       {/* <Memo3 /> */}
-      <Memo4 />
+      {/* <Memo4 /> */}
+      <UseMemo1 />
+      <UseMemo2 />
     </div>
   );
 }
