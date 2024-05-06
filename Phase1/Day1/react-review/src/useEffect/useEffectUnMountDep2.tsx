@@ -7,10 +7,10 @@ export default function UseEffectUnMountDep2() {
     const [count, setCount] = useState(0);
     const [msg, setMsg] = useState("Hello!");
 
-    console.log("************ My Component! ************");
+    console.log("************ Mouting My Component2! ************");
 
     useEffect(() => {
-      console.log("_________ UseEffect! [] _________");
+      console.log("_________ Mouting UseEffect! [] _________");
       return () => {
         // this return CB will only render when MyComponent is unMounted.
         console.log("Unmounting -> UseEffect! [] ");
@@ -18,9 +18,9 @@ export default function UseEffectUnMountDep2() {
     }, []);
 
     useEffect(() => {
-      console.log("_________ UseEffect! No dependencies _________");
+      console.log("_________ Mouting UseEffect! No dep _________");
       return () => {
-        console.log("Unmounting -> UseEffect! No dependencies");
+        console.log("Unmounting -> UseEffect! No dep ");
       };
     });
 
@@ -38,13 +38,20 @@ export default function UseEffectUnMountDep2() {
       };
     }, [msg]);
 
+    useEffect(() => {
+      console.log("============= Mouting Combo! =============");
+      return () => {
+        console.log("Unmounting -> Combo");
+      };
+    }, [msg, count]);
+
     const handleIncrease = () => {
       console.log("Count Clicked<<<<<<<<<<<<<");
       setCount(count + 1);
     };
 
     const handleMsg = () => {
-      console.log("msg Clicked<<<<<<<<<<<<<");
+      console.log("Msg Clicked<<<<<<<<<<<<<");
       setMsg(msg + "Hello!");
     };
 
@@ -59,7 +66,14 @@ export default function UseEffectUnMountDep2() {
   return (
     <>
       <p>Mouting vs Unmounting</p>
-      <button onClick={() => setShow(!show)}>Show</button>
+      <button
+        onClick={() => {
+          console.log("Show Clicked<<<<<<<<<<<<<");
+          setShow(!show);
+        }}
+      >
+        Show
+      </button>
       {show && <MyComponent2 />}
     </>
   );
