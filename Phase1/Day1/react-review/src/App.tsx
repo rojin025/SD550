@@ -8,6 +8,9 @@ import UseMemo2 from "./Memo/UseMemo2";
 import UseEffectUnMount from "./useEffect/useEffectUnMount";
 import UseEffectUnMountDep from "./useEffect/useEffectUnMountDep";
 import UseEffectUnMountDep2 from "./useEffect/useEffectUnMountDep2";
+import CounterUseRef from "./UseRef/CounterUseRef";
+import InnerTextChanger from "./UseRef/InnerTextChanger";
+import UseRefDemo from "./UseRef/UseRefDemo";
 
 function App() {
   return (
@@ -28,8 +31,11 @@ function App() {
       {/* <Memo2 /> */}
       {/* <Memo3 /> */}
       {/* <Memo4 /> */}
-      <UseMemo1 />
-      <UseMemo2 />
+      {/* <UseMemo1 /> */}
+      {/* <UseMemo2 /> */}
+      {/* <UseRefDemo /> */}
+      {/* <CounterUseRef /> */}
+      <InnerTextChanger />
     </div>
   );
 }

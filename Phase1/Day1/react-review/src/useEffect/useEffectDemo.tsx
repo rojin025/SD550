@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function MyComponent() {
+export default function UseEffectDemo() {
   const [count, setCount] = useState(0);
   const [msg, setMsg] = useState("Hello!");
 
@@ -36,8 +36,4 @@ function MyComponent() {
       <button onClick={handleMsg}>Msg</button>
     </>
   );
-}
-
-export default function UseEffectDemo() {
-  return <p>UseEffectDemo</p>;
 }
