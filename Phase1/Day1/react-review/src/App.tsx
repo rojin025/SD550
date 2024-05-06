@@ -12,6 +12,9 @@ import CounterUseRef from "./UseRef/CounterUseRef";
 import InnerTextChanger from "./UseRef/InnerTextChanger";
 import UseRefDemo from "./UseRef/UseRefDemo";
 
+import RouterApp from "./Route/Route";
+import BookRoute from "./Route/BookRoute";
+
 function App() {
   return (
     <div className="App">
@@ -27,15 +30,22 @@ function App() {
       {/* <UseEffectUnMount /> */}
       {/* <UseEffectUnMountDep /> */}
       {/* <UseEffectUnMountDep2 /> */}
+
       {/* <Memo /> */}
       {/* <Memo2 /> */}
       {/* <Memo3 /> */}
       {/* <Memo4 /> */}
+
       {/* <UseMemo1 /> */}
       {/* <UseMemo2 /> */}
+
       {/* <UseRefDemo /> */}
       {/* <CounterUseRef /> */}
-      <InnerTextChanger />
+      {/* <InnerTextChanger /> */}
+
+      {/* ReactRouters */}
+      {/* <RouterApp /> */}
+      <BookRoute />
     </div>
   );
 }
