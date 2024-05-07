@@ -99,14 +99,18 @@ export default function Book({ data }: BookProps) {
               checked={selectedAuthors?.includes(author.id)}
               onChange={onChange}
             />
-            <label htmlFor={data.title + author.id}>{author.id}</label>
+            <label htmlFor={data.title + author.id}>
+              Author: {author.id}, {author.firstname}
+            </label>
           </div>
         );
       })}
       <button onClick={updateAuthors}>Update Authors</button>
       <button onClick={navigateToUpdateBook}>Update Book</button>
       <button onClick={deleteBook}>Delete</button>
-      <button onClick={borrowBook}>Borrow</button>
+      {data.catalog?.availableCopies ? (
+        <button onClick={borrowBook}>Borrow</button>
+      ) : null}
     </div>
   );
 }
