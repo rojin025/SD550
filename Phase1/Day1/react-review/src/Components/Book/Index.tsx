@@ -1,8 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 function Index() {
+  const location = useLocation();
+  const book = location.state;
   return (
     <div>
+      {book && <p>Recieved Book: {book}</p>}
+
       <h1>Book Index</h1>
       <nav>
         <ul>

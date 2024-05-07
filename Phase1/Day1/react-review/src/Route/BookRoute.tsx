@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import PageNotFound from "../Components/PageNotFound";
 import Index from "../Components/Book/Index";
 import EditBook from "../Components/Book/EditBook";
@@ -7,7 +7,7 @@ import AddBook from "../Components/Book/AddBook";
 
 function BookRoute() {
   return (
-    <Router>
+    <BrowserRouter>
       <Routes>
         <Route path="/book">
           <Route index element={<Index />} />
@@ -17,7 +17,7 @@ function BookRoute() {
         </Route>
         <Route path="*" element={<PageNotFound />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 

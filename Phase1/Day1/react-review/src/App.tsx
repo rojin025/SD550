@@ -33,7 +33,7 @@ function App() {
 
       {/* <Memo /> */}
       {/* <Memo2 /> */}
-      {/* <Memo3 /> */}
+      <Memo3 />
       {/* <Memo4 /> */}
 
       {/* <UseMemo1 /> */}
@@ -45,7 +45,7 @@ function App() {
 
       {/* ReactRouters */}
       {/* <RouterApp /> */}
-      <BookRoute />
+      {/* <BookRoute /> */}
     </div>
   );
 }
