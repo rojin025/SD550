@@ -1,20 +1,25 @@
-import { useContext, useEffect } from "react";
-import GlobalContext from "../GlobalContext";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { BASE_URL } from "../Book/BookList";
-import Publisher from "./Publisher";
 import { useNavigate } from "react-router-dom";
+
+import GlobalContext from "../GlobalContext";
+import Publisher from "./Publisher";
+
+import { BASE_URL } from "../Book/BookList";
 
 function PublisherList() {
   const { publishers, setPublishers } = useContext(GlobalContext);
+
+  const [displayPublishers, setDisplayPublishers] = useState(publishers);
+  const [serachText, setSerachText] = useState("");
+
   const navTo = useNavigate();
 
   useEffect(() => {
     const loadPublishers = async () => {
       try {
         const res = await axios.get(`${BASE_URL}publishers`);
-        console.log(res.data);
-        if (res.status !== 200) throw new Error("Oh no.");
+        if (res.status !== 200) throw new Error("Oh no! Publishers!!!");
         setPublishers(res.data);
       } catch (error) {
         console.log("Error Loading Publishers:", error);
@@ -22,6 +27,17 @@ function PublisherList() {
     };
     loadPublishers();
   }, []);
+
+  useEffect(() => {
+    setDisplayPublishers(publishers);
+  }, [publishers]);
+
+  const handleSearch = () => {
+    const result = publishers.filter((publisher) =>
+      publisher.name.toLowerCase().startsWith(serachText.trim().toLowerCase())
+    );
+    setDisplayPublishers(result);
+  };
 
   return (
     <>
@@ -39,7 +55,15 @@ function PublisherList() {
         </div>
       </div>
       <div>
-        {publishers.map((publisher) => (
+        <input
+          type="text"
+          placeholder="Search Publisher"
+          onChange={(e: any) => setSerachText(e.target.value)}
+        />
+        <button onClick={handleSearch}>Search</button>
+      </div>
+      <div>
+        {displayPublishers.map((publisher) => (
           <Publisher key={publisher.id} publisher={publisher} />
         ))}
       </div>

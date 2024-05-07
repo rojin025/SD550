@@ -17,22 +17,24 @@ const initialPublisher = {
 
 function AddPublisher() {
   const { publishers, setPublishers } = useContext(GlobalContext);
-  const navTo = useNavigate();
   const [publisher, setPublisher] = useState<PublisherI>(initialPublisher);
+  const navTo = useNavigate();
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setPublisher({ ...publisher, [name]: value });
+    setPublisher((prevPub) => ({ ...prevPub, [name]: value }));
   };
 
   const handleAdd = async () => {
     if (!publisher.id || !publisher.name) return;
 
     try {
-      const res = await axios.post(`${BASE_URL}/publishers`, publisher);
+      const res = await axios.post(`${BASE_URL}publishers`, publisher);
       if (res.status !== 201) throw new Error("Failed Creating Publisher");
       setPublishers([...publishers, publisher]);
-      window.alert(`Publisher Created: ${publisher}.`);
+
+      window.alert(`Publisher Created: ${publisher.name}.`);
+      setPublisher(initialPublisher);
     } catch (error) {
       console.log("Error Adding Publisher");
     }
@@ -59,28 +61,28 @@ function AddPublisher() {
       </div>
 
       <div className="container px-5">
-        <form className="row g-3 mt-1">
+        <div className="row g-3 mt-1">
           <div className="col-md-6">
-            <label htmlFor="inputEmail4" className="form-label">
+            <label htmlFor="inputId" className="form-label">
               ID
             </label>
             <input
               type="text"
               className="form-control"
-              id="inputEmail4"
+              id="inputId"
               name="id"
               value={publisher.id}
               onChange={handleInputChange}
             />
           </div>
           <div className="col-md-6">
-            <label htmlFor="name" className="form-label">
+            <label htmlFor="inputName" className="form-label">
               Name
             </label>
             <input
               type="text"
               className="form-control"
-              id="name"
+              id="inputName"
               name="name"
               value={publisher.name}
               onChange={handleInputChange}
@@ -134,7 +136,7 @@ function AddPublisher() {
               Add Publisher
             </button>
           </div>
-        </form>
+        </div>
       </div>
     </div>
   );

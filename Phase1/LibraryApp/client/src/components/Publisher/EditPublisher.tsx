@@ -8,7 +8,7 @@ function EditPublisher() {
   const { publishers, setPublishers } = useContext(GlobalContext);
   const location = useLocation();
 
-  const [publisher, setPublisher] = useState(location.state || {});
+  const [publisher, setPublisher] = useState(location.state);
   const navTo = useNavigate();
   console.log(location);
 
@@ -33,6 +33,7 @@ function EditPublisher() {
         console.log("index: ", index);
         publishers[index] = res.data;
         setPublishers([...publishers]);
+        // navTo("/");
         window.history.back();
       } catch (error) {
         console.log("Error on UpdatePublisher:", error);
@@ -42,8 +43,25 @@ function EditPublisher() {
 
   return (
     <div className="container">
-      <h2>Edit Publisher</h2>
-      <div className="container">
+      <div className="row m-2">
+        <div className="col">
+          <button
+            className="btn btn-primary"
+            onClick={() => window.history.back()}
+          >
+            Back
+          </button>
+        </div>
+        <div className="col">
+          <h2 className="">Edit Publisher</h2>
+        </div>
+        <div className="col">
+          <button className="btn btn-info" onClick={() => navTo("/")}>
+            Home
+          </button>
+        </div>
+      </div>
+      <div className="container m-2">
         <form>
           <div>
             <label htmlFor="id">Id: </label>
@@ -96,7 +114,9 @@ function EditPublisher() {
               onChange={handleInputChange}
             />
           </div>
-          <button onClick={handleUpdate}>Submit</button>
+          <button className="btn btn-success m-3" onClick={handleUpdate}>
+            Submit
+          </button>
         </form>
       </div>
     </div>

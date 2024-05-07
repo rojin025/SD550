@@ -21,21 +21,21 @@
     {
       "id": "1",
       "name": "MIU Press",
-      "phone": "641-123-1204",
+      "phone": "641-123-1000",
       "email": "press@miu.edu",
       "address": "Fairfield, IA, 5256"
     },
     {
       "id": "2",
       "name": "NewYork Press",
-      "phone": "641-123-1234",
+      "phone": "641-123-9034",
       "email": "press@ny.edu",
       "address": "Fairfield, IA, 5256"
     },
     {
       "id": "3",
       "name": "Forbs Press",
-      "phone": "641-123-1234",
+      "phone": "641-123-1010",
       "email": "press@forbs.edu",
       "address": "Fairfield, IA, 5256"
     },
@@ -45,6 +45,13 @@
       "phone": "641-123-1234",
       "email": "press@amazon.edu",
       "address": "Fairfield, IA, 5256"
+    },
+    {
+      "id": "4",
+      "name": "MIU2",
+      "phone": "123-1235-1231",
+      "email": "Miu@edu.com",
+      "address": "Fairfield, IA"
     }
   ],
   "books": [
@@ -61,7 +68,7 @@
       "publisher": 1,
       "catalog": {
         "numberOfCopies": 10,
-        "availableCopies": 5
+        "availableCopies": 0
       }
     },
     {

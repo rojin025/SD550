@@ -1,9 +1,11 @@
-import { useNavigate } from "react-router-dom";
-import { PublisherI } from "../../Types/types";
-import axios from "axios";
-import { BASE_URL } from "../Book/BookList";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+import { BASE_URL } from "../Book/BookList";
 import GlobalContext from "../GlobalContext";
+
+import { PublisherI } from "../../Types/types";
 
 interface props {
   publisher: PublisherI;
@@ -12,7 +14,7 @@ interface props {
 function Publisher({ publisher }: props) {
   const { publishers, setPublishers } = useContext(GlobalContext);
 
-  const navigate = useNavigate();
+  const navTo = useNavigate();
 
   const handleDelete = async (e: any) => {
     const confirm = window.confirm(`Do you want to delete ${publisher.name}?`);
@@ -65,6 +67,7 @@ function Publisher({ publisher }: props) {
                 <div>Id: {publisher.id}</div>
                 <div>phone: {publisher.phone}</div>
                 <div>Email: {publisher.email}</div>
+                {/* handleDelete is inside card body */}
                 <div className="card-body">
                   <div className="col">
                     <div className="container ">
@@ -73,7 +76,7 @@ function Publisher({ publisher }: props) {
                           <button
                             className="btn  btn-secondary"
                             onClick={() =>
-                              navigate("/editPublisher", { state: publisher })
+                              navTo("/editPublisher", { state: publisher })
                             }
                           >
                             Edit
