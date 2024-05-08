@@ -1,4 +1,4 @@
-import BookTemplate from "./BookTemplate";
+import BookTemplate from "./Book";
 import { BookI } from "../../Types/types";
 import { useContext } from "react";
 import GlobalContext from "../GlobalContext";

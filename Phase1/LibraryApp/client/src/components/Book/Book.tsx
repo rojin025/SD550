@@ -9,9 +9,9 @@ interface props {
   book: BookI;
 }
 
-function BookTemplate({ book }: props) {
+function Book({ book }: props) {
   const navTo = useNavigate();
-  const { books } = useContext(GlobalContext);
+  const { books, authors, setBooks } = useContext(GlobalContext);
 
   async function handleDeleteBook() {
     const res = window.confirm("Delete Book?");
@@ -76,4 +76,4 @@ function BookTemplate({ book }: props) {
   );
 }
 
-export default BookTemplate;
+export default Book;
