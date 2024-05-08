@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
-import { BookI } from "../../Types/types";
+import { AuthorI, BookI } from "../../Types/types";
 import axios from "axios";
 import { BASE_URL } from "./BookList";
-import { useContext } from "react";
+import { ChangeEvent, useContext, useState } from "react";
 import GlobalContext from "../GlobalContext";
 
 interface props {
@@ -12,6 +12,7 @@ interface props {
 function Book({ book }: props) {
   const navTo = useNavigate();
   const { books, authors, setBooks } = useContext(GlobalContext);
+  const [selectedAuthors, setSeletedAuthors] = useState<string[]>(book.authors);
 
   async function handleDeleteBook() {
     const res = window.confirm("Delete Book?");
@@ -25,6 +26,23 @@ function Book({ book }: props) {
       } catch (error) {}
     }
   }
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const authorId = e.target.value;
+    if (selectedAuthors?.includes(authorId)) {
+      const arr = selectedAuthors.filter(
+        (currentAuthor) => currentAuthor !== authorId
+      );
+      setSeletedAuthors(arr);
+    } else {
+      if (selectedAuthors) {
+        const arr = [...selectedAuthors, authorId];
+        setSeletedAuthors(arr);
+      } else {
+        setSeletedAuthors([authorId]);
+      }
+    }
+  };
 
   return (
     <div className="col">
@@ -61,6 +79,19 @@ function Book({ book }: props) {
           <p className="card-text">
             <i> - "{book.summary}"</i>
           </p>
+          {book.catalog && <p>{book.catalog.availableCopies}</p>}
+          {authors.map((author: AuthorI) => {
+            return (
+              <div>
+                <input
+                  type="checkbox"
+                  id={book.title + author.id}
+                  value={author.id}
+                  onChange={handleChange}
+                />
+              </div>
+            );
+          })}
         </div>
         <button
           className="btn btn-lg btn-success"

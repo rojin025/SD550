@@ -5,7 +5,7 @@ export interface BookI {
   isbn: string;
   format: string;
   summary: string;
-  authors: AuthorI[];
+  authors: string[];
   publisher: number;
   catalog: Catalog;
 }
