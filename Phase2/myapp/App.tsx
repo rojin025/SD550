@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Alert,
   Button,
@@ -8,43 +8,64 @@ import {
   StyleSheet,
   Text,
   TextInput,
+  Image,
   View,
+  SafeAreaView,
+  ScrollView,
+  FlatList,
 } from "react-native";
 
+interface ProductI {
+  id: number;
+  name: string;
+  image: string;
+}
+
+interface props {
+  product: ProductI;
+}
+
+function Product({ product }: props) {
+  const { id, name, image } = product;
+  return (
+    <View>
+      <Text>
+        {id}
+        {name}
+      </Text>
+      <Image source={{ uri: `${image}` }} style={{ height: 100, width: 200 }} />
+    </View>
+  );
+}
+
 export default function App() {
-  const [value, setValue] = useState("");
+  const [products, setProducts] = useState<ProductI[]>([]);
 
-  const handleSubmit = () => {
-    Alert.alert(value);
-  };
-
-  const handleChange = (text: string) => {
-    console.log(text);
-    setValue(text);
-  };
+  useEffect(() => {
+    const arr = [];
+    for (let i = 0; i < 100; i++) {
+      arr.push({
+        id: i + 1,
+        name: "name " + i,
+        image:
+          "https://fastly.picsum.photos/id/887/200/300.jpg?hmac=jzro4NZWOPJxqU5bUBoxrD7f4jPtFNB4VmKpn7H5sYI",
+      });
+    }
+    setProducts(arr);
+  }, []);
 
   return (
     <View style={styles.container}>
       <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-
-      <KeyboardAvoidingView
-        behavior={Platform.OS === "ios" ? "padding" : "height"}
-      >
-        {/* Image */}
-
-        {/* Input */}
-        <TextInput
-          style={styles.input}
-          value={value}
-          onChangeText={handleChange}
-        >
-          Input
-        </TextInput>
-        <Text> Output: {value}</Text>
-      </KeyboardAvoidingView>
-
-      <Button title="Submit" onPress={handleSubmit} />
+      <SafeAreaView>
+        <ScrollView>
+          <FlatList
+            data={products}
+            renderItem={({ item }) => <Product product={item} />}
+            keyExtractor={(item) => item.id.toString()}
+          />
+        </ScrollView>
+      </SafeAreaView>
     </View>
   );
 }
