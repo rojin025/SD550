@@ -6,9 +6,11 @@ import {
   SafeAreaView,
   ScrollView,
   FlatList,
+  Button,
 } from "react-native";
 
 import styles from "./styles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 interface ProductI {
   id: number;
@@ -34,8 +36,17 @@ function Product({ product }: props) {
 export default function App() {
   const [products, setProducts] = useState<ProductI[]>([]);
 
+  const handleSave = async () => {
+    try {
+      // const res = await AsyncStorage.getItem();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   useEffect(() => {
     const arr = [];
+
     for (let i = 0; i < 10; i++) {
       arr.push({
         id: i + 1,
@@ -49,6 +60,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <Button title="Save" onPress={handleSave} />;
       <ScrollView>
         <FlatList
           data={products}
