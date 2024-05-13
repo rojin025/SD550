@@ -1,8 +1,8 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import Home from "../components/Home";
-import Products from "../components/Products";
+import HomeScreen from "../components/HomeScreen";
+import ProductsScreen from "../components/ProductsScreen";
 
 export default function StackNavigation() {
   const { Navigator, Screen } = createNativeStackNavigator();
@@ -12,11 +12,11 @@ export default function StackNavigation() {
     <NavigationContainer>
       <Navigator>
         <Screen
-          name="home"
-          component={Home}
+          name="Home"
+          component={HomeScreen}
           options={{ title: "My Home", headerShown: true }}
         />
-        <Screen name="products" component={Products} />
+        <Screen name="Products" component={ProductsScreen} />
       </Navigator>
     </NavigationContainer>
   );
