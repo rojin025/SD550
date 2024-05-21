@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
 import GlobalContext from "../../Context";
-import { updatePublisher } from "./publisher.api";
+import { updatePublisher } from "../../services/publisher.api";
 import Styles from "../../Styles";
 
 function UpdatePublisherScreen({ navigation, route }: any) {

@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
 import GlobalContext from "../../Context";
-import { createPublisher } from "./publisher.api";
+import { createPublisher } from "../../services/publisher.api";
 import Styles from "../../Styles";
 
 const initialPublisher = {

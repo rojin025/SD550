@@ -1,5 +1,5 @@
 import axios from "axios";
-import { PublisherI } from "../../Types/Types";
+import { PublisherI } from "../Types/Types";
 
 axios.defaults.baseURL = "http://localhost:9000/";
 

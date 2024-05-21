@@ -1,6 +1,5 @@
 import { createStackNavigator } from "@react-navigation/stack";
 
-import { View, Text } from "react-native";
 import PublishersScreen from "./PublishersScreen";
 
 export default function Home() {
@@ -8,7 +7,14 @@ export default function Home() {
 
   return (
     <Navigator>
-      <Screen name="home-sceen" component={PublishersScreen} />
+      <Screen
+        name="home-sceen"
+        component={PublishersScreen}
+        options={{
+          title: "Title Here",
+          headerShown: true,
+        }}
+      />
     </Navigator>
   );
 }

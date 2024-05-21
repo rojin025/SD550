@@ -1,29 +1,43 @@
-import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import A from "./Components/Home";
+import Home from "./Components/Home";
 import AboutUs from "./Components/AboutUs";
 
+import GlobalContext from "./Context";
+import { PublisherI } from "./Types/Types";
+import { useEffect, useState } from "react";
+import { getPublishers } from "./services/publisher.api";
+
 export default function App() {
+  const [publishers, setPublishers] = useState<PublisherI[]>([]);
   const { Navigator, Screen } = createBottomTabNavigator();
 
+  useEffect(() => {
+    const loadPublishers = async () => {
+      try {
+        const data = await getPublishers();
+        setPublishers(data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    loadPublishers();
+  });
+
   return (
-    <NavigationContainer>
-      <Navigator>
-        <Screen name={"Home"} component={A} />
-        <Screen name={"About-Us"} component={AboutUs} />
-      </Navigator>
-    </NavigationContainer>
+    <GlobalContext.Provider
+      value={{
+        publishers,
+        setPublishers,
+      }}
+    >
+      <NavigationContainer>
+        <Navigator>
+          <Screen name={"Home"} component={Home} />
+          <Screen name={"About-Us"} component={AboutUs} />
+        </Navigator>
+      </NavigationContainer>
+    </GlobalContext.Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
