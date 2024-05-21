@@ -9,7 +9,7 @@ const { Navigator, Screen } = createDrawerNavigator();
 function AppDrawer() {
   return (
     <NavigationContainer>
-      <Navigator initialRouteName="Home">
+      <Navigator>
         <Screen
           name="Home"
           component={HomeScreen}

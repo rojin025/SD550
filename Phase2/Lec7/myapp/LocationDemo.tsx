@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
-import { View, Text, ActivityIndicator } from "react-native";
+import {
+  Text,
+  ActivityIndicator,
+  StyleSheet,
+  Dimensions,
+  View,
+} from "react-native";
 
 import * as Location from "expo-location";
 import MapView, { Marker } from "react-native-maps";
+
+import * as ImagePicker from "expo-image-picker";
 
 export default function LocationDemo() {
   const [status, setStatus] = useState();
@@ -29,7 +37,7 @@ export default function LocationDemo() {
 
   return (
     <MapView
-      style={{ width: "100%", height: "100%" }}
+      style={styles.mapStyle}
       initialRegion={{
         latitude: coords.latitude,
         longitude: coords.longitude,
@@ -38,7 +46,23 @@ export default function LocationDemo() {
       }}
     >
       <Marker draggable coordinate={coords} pinColor="red" />
-      <Text>Location Demo</Text>
+      <View style={styles.overLayTextContainer}>
+        <Text>Location Demo</Text>
+      </View>
     </MapView>
   );
 }
+
+const styles = StyleSheet.create({
+  mapStyle: {
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
+  },
+  overLayTextContainer: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-end",
+    margin: 20,
+    backgroundColor: "transparent",
+  },
+});
