@@ -1,0 +1,24 @@
+{
+  "publishers": [
+    {
+      "id": "P001",
+      "name": "TechBooks Publishing",
+      "phone": "456-789-0123",
+      "email": "contact@techbookspub.com",
+      "address": "123 Tech St, Silicon Valley, CA"
+    },
+    {
+      "id": "P002",
+      "name": "CodeWorld Publishers",
+      "phone": "567-890-1234",
+      "email": "info@codeworldpub.com",
+      "address": "234 Code Ave, Programmer City, TX"
+    },
+    {
+      "id": "D103",
+      "name": "Demo2",
+      "phone": "123-123-534",
+      "email": "Demo@gmail.com"
+    }
+  ]
+}

@@ -1,20 +1,39 @@
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
+import { useState } from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+
+import GlobalContext from "./Context";
+import { PublisherI } from "./Types/Types";
+import AboutScreen from "./Components/AboutScreen";
+import PublishersScreen from "./Components/PublishersScreen";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <View>
-        <Text style={styles.title}>1</Text>
-      </View>
+  const [publishers, setPublishers] = useState<PublisherI[]>([]);
 
-      <View>
-        <Text style={styles.title}>Text</Text>
-      </View>
-      <View>
-        <Text style={styles.title}>2</Text>
-      </View>
-    </View>
+  const { Navigator, Screen } = createBottomTabNavigator();
+
+  return (
+    <GlobalContext.Provider
+      value={{
+        publishers,
+        setPublishers,
+      }}
+    >
+      <NavigationContainer>
+        <Navigator screenOptions={{ headerShown: false }}>
+          <Screen
+            name="publishers-screen"
+            component={PublishersScreen}
+            options={{
+              title: "Books",
+            }}
+          />
+          <Screen name="about-screen" component={AboutScreen} />
+        </Navigator>
+      </NavigationContainer>
+      ;
+    </GlobalContext.Provider>
   );
 }
 
