@@ -30,10 +30,7 @@ function PublishersScreen() {
       </Text>
       <Text style={styles.text}>
         Why is the block system so popular with our students? video block-system
-        At MIU you never juggle 4-5 classes and homework at once. Instead,
-        you’re immersed in only one full-time course each month. This is the
-        block system. The block system allows you to easily learn more with less
-        stress. And there’s no finals week!
+        At MIU you never juggle 4-5 classes and homework at once. Instead, y
       </Text>
     </View>
   );
