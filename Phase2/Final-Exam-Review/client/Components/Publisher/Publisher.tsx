@@ -29,6 +29,7 @@ function Publisher({ publisherData, index }: props) {
         console.log("cancelled");
       }
     );
+
     const handleDelete = async () => {
       try {
         const res = await deletePublisher(publisherData.id);

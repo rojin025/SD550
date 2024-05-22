@@ -3,5 +3,4 @@ export interface PublisherI {
   name: string;
   phone: string;
   email: string;
-  address: string;
 }

@@ -6,22 +6,17 @@ const showConfirmation = (
   onConfirm: () => void,
   onCancel: () => void
 ) => {
-  Alert.alert(
-    title,
-    message,
-    [
-      {
-        text: "Cancel",
-        onPress: onCancel,
-        style: "cancel",
-      },
-      {
-        text: "OK",
-        onPress: onConfirm,
-      },
-    ],
-    { cancelable: false }
-  );
+  Alert.alert(title, message, [
+    {
+      text: "Cancel",
+      onPress: onCancel,
+      style: "cancel",
+    },
+    {
+      text: "OK",
+      onPress: onConfirm,
+    },
+  ]);
 };
 
 export default showConfirmation;
