@@ -10,9 +10,9 @@ export default function PublishersScreen() {
       <Text>PublishersScreen</Text>
       <FlatList
         data={publishers}
-        renderItem={({ item }) => (
+        renderItem={({ item, index }) => (
           <View>
-            <Text>{item.id}</Text>
+            <Text key={index}>{item.id}</Text>
           </View>
         )}
       />

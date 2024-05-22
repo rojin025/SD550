@@ -34,7 +34,13 @@ export default function App() {
     >
       <NavigationContainer>
         <Navigator>
-          <Screen name={"Home"} component={Home} />
+          <Screen
+            name={"Home"}
+            component={Home}
+            options={{
+              headerShown: false,
+            }}
+          />
           <Screen name={"About-Us"} component={AboutUs} />
         </Navigator>
       </NavigationContainer>

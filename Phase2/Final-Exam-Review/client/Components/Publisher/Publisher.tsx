@@ -1,98 +1,96 @@
-// import { useContext } from "react";
-// import { SafeAreaView, Text, TouchableHighlight, View } from "react-native";
-// import { useNavigation } from "@react-navigation/native";
+import { useContext } from "react";
+import { SafeAreaView, Text, TouchableHighlight, View } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import showConfirmation from "../../Confirmation";
+import GlobalContext from "../../Context";
+import { PublisherI } from "../../Types/Types";
+import { deletePublisher } from "../../services/publisher.api";
+import Styles from "../Styles";
 
-// import Styles from "../../Styles";
+interface props {
+  publisherData: PublisherI;
+  index: number;
+}
 
-// import { PublisherI } from "../../Types/Types";
-// import GlobalContext from "../../Context";
-// import showConfirmation from "../Confirmation";
-// import { deletePublisher } from "./publisher.api";
+function Publisher({ publisherData, index }: props) {
+  const navigation = useNavigation();
+  const { publishers, setPublishers } = useContext(GlobalContext);
 
-// interface props {
-//   publisherData: PublisherI;
-//   index: number;
-// }
+  const handleNavToPublisherDetails = () => {
+    navigation.navigate("publisher-details", publisherData);
+  };
 
-// function Publisher({ publisherData, index }: props) {
-//   const navigation = useNavigation();
-//   const { publishers, setPublishers } = useContext(GlobalContext);
+  const askDeleteConfirmation = () => {
+    showConfirmation(
+      "Delete",
+      "Are you sure?",
+      () => handleDelete(),
+      () => {
+        console.log("cancelled");
+      }
+    );
+    const handleDelete = async () => {
+      try {
+        const res = await deletePublisher(publisherData.id);
+        if (res) {
+          console.log("res", res);
+          const updatedPublishers = publishers.filter(
+            (publisher) => publisher.id !== publisherData.id
+          );
+          setPublishers(updatedPublishers);
+        }
+      } catch (error) {}
+    };
+  };
 
-//   const handleNavToPublisherDetails = () => {
-//     navigation.navigate("publisher-details", publisherData);
-//   };
+  const handleEdit = () => {
+    navigation.navigate("update-publisher", publisherData);
+  };
 
-//   const askDeleteConfirmation = () => {
-//     showConfirmation(
-//       "Delete",
-//       "Are you sure?",
-//       () => handleDelete(),
-//       () => {
-//         console.log("cancelled");
-//       }
-//     );
-//     const handleDelete = async () => {
-//       try {
-//         const res = await deletePublisher(publisherData.id);
-//         if (res) {
-//           console.log("res", res);
-//           const updatedPublishers = publishers.filter(
-//             (publisher) => publisher.id !== publisherData.id
-//           );
-//           setPublishers(updatedPublishers);
-//         }
-//       } catch (error) {}
-//     };
-//   };
+  return (
+    <SafeAreaView>
+      <View
+        style={[
+          Styles.container,
+          { backgroundColor: index % 2 === 0 ? "white" : "lightgrey" },
+        ]}
+      >
+        <View style={Styles.row}>
+          <View style={Styles.course}>
+            <Text style={Styles.title}>{publisherData.name}</Text>
+            <Text style={Styles.faculty}>
+              {publisherData.id} - {publisherData.phone}
+            </Text>
+            <Text style={Styles.faculty}>{publisherData.email}</Text>
+          </View>
 
-//   const handleEdit = () => {
-//     navigation.navigate("update-publisher", publisherData);
-//   };
+          <View style={Styles.edges}>
+            <TouchableHighlight
+              onPress={handleNavToPublisherDetails}
+              style={Styles.infoButton}
+              underlayColor="#5398DC"
+            >
+              <Text style={Styles.buttonText}>Details</Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+              onPress={askDeleteConfirmation}
+              style={Styles.deleteButton}
+              underlayColor="red"
+            >
+              <Text style={Styles.buttonText}>Delete</Text>
+            </TouchableHighlight>
+            <TouchableHighlight
+              onPress={handleEdit}
+              style={Styles.editButton}
+              underlayColor="Green"
+            >
+              <Text style={Styles.buttonText}> Edit </Text>
+            </TouchableHighlight>
+          </View>
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+}
 
-//   return (
-//     <SafeAreaView>
-//       <View
-//         style={[
-//           Styles.container,
-//           { backgroundColor: index % 2 === 0 ? "white" : "lightgrey" },
-//         ]}
-//       >
-//         <View style={Styles.row}>
-//           <View style={Styles.course}>
-//             <Text style={Styles.title}>{publisherData.name}</Text>
-//             <Text style={Styles.faculty}>
-//               {publisherData.id} - {publisherData.phone}
-//             </Text>
-//             <Text style={Styles.faculty}>{publisherData.email}</Text>
-//           </View>
-
-//           <View style={Styles.edges}>
-//             <TouchableHighlight
-//               onPress={handleNavToPublisherDetails}
-//               style={Styles.infoButton}
-//               underlayColor="#5398DC"
-//             >
-//               <Text style={Styles.buttonText}>Details</Text>
-//             </TouchableHighlight>
-//             <TouchableHighlight
-//               onPress={askDeleteConfirmation}
-//               style={Styles.deleteButton}
-//               underlayColor="red"
-//             >
-//               <Text style={Styles.buttonText}>Delete</Text>
-//             </TouchableHighlight>
-//             <TouchableHighlight
-//               onPress={handleEdit}
-//               style={Styles.editButton}
-//               underlayColor="Green"
-//             >
-//               <Text style={Styles.buttonText}> Edit </Text>
-//             </TouchableHighlight>
-//           </View>
-//         </View>
-//       </View>
-//     </SafeAreaView>
-//   );
-// }
-
-// export default Publisher;
+export default Publisher;

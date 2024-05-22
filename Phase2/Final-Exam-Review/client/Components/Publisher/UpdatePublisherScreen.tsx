@@ -1,13 +1,23 @@
 import { useContext, useState } from "react";
 import { Pressable, Text, TextInput, View } from "react-native";
+
 import GlobalContext from "../../Context";
 import { updatePublisher } from "../../services/publisher.api";
-import Styles from "../../Styles";
+import Styles from "../Styles";
 
 function UpdatePublisherScreen({ navigation, route }: any) {
   const [publisher, setPublisher] = useState(route.params);
   const { publishers, setPublishers } = useContext(GlobalContext);
+  const [isEmailVaild, setIsEmailVaild] = useState(true);
 
+  const isValidEmail = (email: string) => {
+    return email.endsWith(".com");
+  };
+
+  const handleEmailChange = (text: string) => {
+    setPublisher({ ...publisher, email: text });
+    setIsEmailVaild(isValidEmail(text));
+  };
   const handleUpdate = async () => {
     console.log("Update:", publisher);
     try {
@@ -55,8 +65,9 @@ function UpdatePublisherScreen({ navigation, route }: any) {
         placeholder="Email:"
         style={Styles.input}
         value={publisher.email}
-        onChangeText={(text) => setPublisher({ ...publisher, email: text })}
+        onChangeText={handleEmailChange}
       />
+      {!isEmailVaild && <Text>Invalid Email!</Text>}
       <Pressable style={Styles.button} onPress={handleUpdate}>
         <Text style={Styles.buttonTextPrimary}>Update</Text>
       </Pressable>

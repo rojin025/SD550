@@ -9,10 +9,9 @@ import {
   FlatList,
   Pressable,
 } from "react-native";
-import { AntDesign } from "@expo/vector-icons";
+import Styles from "../Styles";
+import Publisher from "./Publisher";
 import GlobalContext from "../../Context";
-import Styles from "../../Styles";
-// import Publisher from "./Publisher";
 
 function PublishersScreen({ navigation }: any) {
   const { publishers, setPublishers } = useContext(GlobalContext);
@@ -22,21 +21,21 @@ function PublishersScreen({ navigation }: any) {
       <View>
         <Text style={Styles.headerText}>Publishers</Text>
       </View>
-      {/* <FlatList
+      <FlatList
         data={publishers}
         renderItem={({ item, index }) => (
           <Publisher publisherData={item} index={index} />
         )}
         keyExtractor={(item) => item.id}
-      /> */}
-      {/* <Pressable
+      />
+      <Pressable
         style={Styles.button}
         onPress={() => {
           navigation.navigate("add-publisher");
         }}
       >
         <Text style={Styles.buttonText}>Add Publisher</Text>
-      </Pressable> */}
+      </Pressable>
     </SafeAreaView>
   );
 }
