@@ -13,9 +13,10 @@ import Styles from "./Styles";
 import { LOCAL_STORAGE_KEY } from "./constants";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import showConfirmation from "../Confirmation";
+import GlobalContext from "../Context";
 
 export default function AboutUs() {
-  // const { setLoggedIn } = useContext(GlobalContext);
+  const { setLoggedIn } = useContext(GlobalContext);
 
   const askConfirmation = () => {
     showConfirmation(
@@ -32,7 +33,7 @@ export default function AboutUs() {
           LOCAL_STORAGE_KEY,
           JSON.stringify({ loggedIn: false })
         );
-        // setLoggedIn(false);
+        setLoggedIn(false);
         console.log("Logged in status removed successfully.");
       } catch (error) {
         console.error("Error removing logged in status:", error);
