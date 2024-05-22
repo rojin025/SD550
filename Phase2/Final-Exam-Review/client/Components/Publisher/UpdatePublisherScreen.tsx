@@ -21,14 +21,14 @@ function UpdatePublisherScreen({ navigation, route }: any) {
   const handleUpdate = async () => {
     console.log("Update:", publisher);
     try {
-      const res = await updatePublisher(publisher.id, publisher);
-      if (res) {
+      const data = await updatePublisher(publisher.id, publisher);
+      if (data) {
         const index = publishers.findIndex(
           (currAuth) => currAuth.id === publisher.id
         );
         if (index !== -1) {
           const updatedpublishers = [...publishers];
-          updatedpublishers[index] = res;
+          updatedpublishers[index] = data;
           setPublishers([]);
           setPublishers(updatedpublishers);
           navigation.goBack();

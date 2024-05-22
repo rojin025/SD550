@@ -1,4 +1,6 @@
 import { createStackNavigator } from "@react-navigation/stack";
+// import { createDrawerNavigator } from '@react-navigation/drawer';
+
 import PublishersScreen from "./Publisher/PublishersScreen";
 import UpdatePublisherScreen from "./Publisher/UpdatePublisherScreen";
 import PublisherDetailsScreen from "./Publisher/PublisherDetailsScreen";
@@ -8,9 +10,10 @@ import AddPublisherScreen from "./Publisher/AddPublisherScreen";
 
 export default function Home() {
   const { Navigator, Screen } = createStackNavigator();
+  // const Drawer = createDrawerNavigator();
 
   return (
-    <Navigator>
+    <Navigator initialRouteName="home-screen">
       <Screen
         name="home-sceen"
         component={PublishersScreen}
