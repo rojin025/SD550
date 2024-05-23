@@ -1,7 +1,12 @@
 import { useContext } from "react";
-import { SafeAreaView, Text, TouchableHighlight, View } from "react-native";
+import {
+  Alert,
+  SafeAreaView,
+  Text,
+  TouchableHighlight,
+  View,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import showConfirmation from "../../Confirmation";
 import GlobalContext from "../../Context";
 import { PublisherI } from "../../Types/Types";
 import { deletePublisher } from "../../services/publisher.api";
@@ -21,27 +26,32 @@ function Publisher({ publisherData, index }: props) {
   };
 
   const askDeleteConfirmation = () => {
-    showConfirmation(
-      "Delete",
-      "Are you sure?",
-      () => handleDelete(),
-      () => {
-        console.log("cancelled");
-      }
-    );
-
     const handleDelete = async () => {
       try {
         const res = await deletePublisher(publisherData.id);
         if (res) {
-          console.log("res", res);
           const updatedPublishers = publishers.filter(
             (publisher) => publisher.id !== publisherData.id
           );
           setPublishers(updatedPublishers);
         }
-      } catch (error) {}
+      } catch (error) {
+        console.error(error);
+      }
     };
+
+    Alert.alert("Delete", "Are you sure?", [
+      { text: "Delete", onPress: handleDelete },
+      {
+        text: "Cancel",
+        onPress: () => {
+          console.log("cancelled");
+        },
+      },
+    ]);
+
+    const uuid = Math.floor(Date.now() * Math.random());
+    console.log("UUID : ", uuid);
   };
 
   const handleEdit = () => {

@@ -22,6 +22,7 @@ export default function Login({ setLoggedIn }: LoginProps) {
       }
 
       const res = await isEligibleUser(email);
+      console.log(res);
 
       if (res) {
         await AsyncStorage.setItem(

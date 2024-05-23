@@ -6,6 +6,7 @@ axios.defaults.baseURL = "http://localhost:9000/";
 export async function isEligibleUser(email: string) {
   try {
     const res = await axios.get(`users?email=${email}`);
+    console.log(res.data);
     if (res.status === 200 && res.data.length > 0) {
       return true;
     }
